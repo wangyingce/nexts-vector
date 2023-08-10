@@ -33,13 +33,13 @@ export default async function handler(req: any, res: any) {
       }
     });
   });
-  let paramss: any = getUrlParamsFor(req.url);
-  console.log(paramss);
-  let code: string = getUrlParamsFor(req.url, "code");
-  if (!code) {
-    res.send({ code: -1, data: [], error: "code is required" });
-    return;
-  }
+  // let paramss: any = getUrlParamsFor(req.url);
+  // console.log(paramss);
+  // let code: string = getUrlParamsFor(req.url, "code");
+  // if (!code) {
+  //   res.send({ code: -1, data: [], error: "code is required" });
+  //   return;
+  // }
   myEnv = {
     pinecone: {
       environment: env.PINECONE_ENVIRONMENT,
@@ -58,7 +58,8 @@ export default async function handler(req: any, res: any) {
     res.send({
       code: 200,
       data: Object.keys(indexStats.namespaces).filter((item) => {
-        return item.startsWith(req.query.code);
+        // return item.startsWith(req.query.code);
+        return item;
       }),
     });
   } catch (error) {
